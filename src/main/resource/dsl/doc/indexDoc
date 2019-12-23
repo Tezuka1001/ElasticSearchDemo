@@ -1,0 +1,9 @@
+curl -X PUT 'localhost:9200/lol/hero/6/_create' -H 'Content-Type: application/json' -d'
+{
+    "title": "熔岩巨兽",
+    "name": "墨菲特",
+    "country": "瓦罗兰大陆",
+    "gender": "男",
+    "position": "坦克",
+    "age": 127
+}'

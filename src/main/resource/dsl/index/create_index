@@ -1,0 +1,27 @@
+curl -X PUT 'localhost:9200/lol?pretty' -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "hero" : {
+      "properties" : {
+        "title" : {
+          "type" :    "keyword"
+        },
+        "name" : {
+          "type" :   "keyword"
+        },
+        "country" : {
+          "type" :   "keyword"
+        },
+        "gender" : {
+          "type" :   "keyword"
+        },
+        "position" : {
+          "type" :   "keyword"
+        },
+        "age" : {
+          "type" :   "byte"
+        }
+      }
+    }
+  }
+}'

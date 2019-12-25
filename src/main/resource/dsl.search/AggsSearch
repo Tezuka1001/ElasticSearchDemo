@@ -1,0 +1,43 @@
+curl -X POST 'localhost:9200/lol/hero/_search'?pretty -H 'Content-Type: application/json' -d'
+{
+    "size":0,
+    "timeout":"50ms",
+    "aggregations":{
+        "countryBucket":{
+            "terms":{
+                "field":"country",
+                "size":100,
+                "min_doc_count":1,
+                "shard_min_doc_count":0,
+                "show_term_doc_count_error":false,
+                "order":[
+                    {
+                        "_count":"desc"
+                    },
+                    {
+                        "_key":"asc"
+                    }
+                ]
+            },
+            "aggregations":{
+                "ageAvg":{
+                    "avg":{
+                        "field":"age"
+                    }
+                },
+                "having":{
+                    "bucket_selector":{
+                        "buckets_path":{
+                            "ageAvg":"ageAvg"
+                        },
+                        "script":{
+                            "source":"params.ageAvg >= 30",
+                            "lang":"painless"
+                        },
+                        "gap_policy":"skip"
+                    }
+                }
+            }
+        }
+    }
+}'

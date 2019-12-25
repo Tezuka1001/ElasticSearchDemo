@@ -1,0 +1,4 @@
+curl -X POST "localhost:9200/lol/hero/2/_update?pretty" -H 'Content-Type: application/json' -d'
+{
+   "script" : "ctx._source.age += 1"
+}'

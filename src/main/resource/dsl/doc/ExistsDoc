@@ -1,0 +1,1 @@
+curl -i -XHEAD http://localhost:9200/lol/hero/1

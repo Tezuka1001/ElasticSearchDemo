@@ -30,6 +30,7 @@ public class SearchDemo {
     private static final String GENDER = "gender";
 
     public static void main(String[] args) throws IOException {
+
         RestHighLevelClient client = RestClientUtil.getClient();
 
         /**
